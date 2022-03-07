@@ -47,7 +47,8 @@ struct RunTallybis {
   float  PositionZ;
   float  DeathLambda;
   float  BirthLambda;
-  float Time;
+  float  Time;
+  float  Energy_pe;
   //float  Theta;
   //float  Phi;
   int Total_Reflections;

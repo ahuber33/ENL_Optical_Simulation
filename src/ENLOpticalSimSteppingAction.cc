@@ -184,6 +184,8 @@ if(aStep->GetPostStepPoint()->GetStepStatus()==fGeomBoundary){
       //G4cout << "Photon detecté" << G4endl;
       //  evtac->CountDetected_without_CU();
       //evtac->CountDetected(aTally);
+      Statisticsbis.Energy_pe = aStep->GetTotalEnergyDeposit()/eV;
+      //G4cout << "Energy of pe = " << aStep->GetTotalEnergyDeposit()/eV << " eV" << G4endl;
       runac->UpdateStatisticsbis(Statisticsbis);
 
       break;
