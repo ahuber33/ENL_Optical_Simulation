@@ -29,3 +29,4 @@
 #commit #3 le 08/03/2022 (Split absorption/scattering length)
 # - Ajout de la propriété Rayleigh scattering et donc split de l'attenuation length en absorption length et scattering length selon [https://www.researchgate.net/publication/254060762_Optical_Absorption_Length_Scattering_Length_and_Refractive_Index_of_LaBr3Ce3]
 # - Selon cette référence, l'absorption entraine quasi à chaque fois la réémission d'un photon derrière donc à investiguer dans le futur !!!
+# -> commit 3 bis rétablit juste certains commentaires pour éviter de polluer l'affichage lors de la simulation

@@ -152,8 +152,8 @@ ENLOpticalSimSteppingAction::ENLOpticalSimSteppingAction()
       if(endproc == "OpRayleigh")
       {
         ((ENLOpticalSimTrackInformation*)(aStep->GetTrack()->GetUserInformation()))->CountRayleighScattering();
-        G4cout << "Rayleigh scattering" << G4endl;
-        G4cout << "Number of scattering = " << ((ENLOpticalSimTrackInformation*) (aStep->GetTrack()->GetUserInformation()))->GetRayleigh() << G4endl;
+        //G4cout << "Rayleigh scattering" << G4endl;
+        //G4cout << "Number of scattering = " << ((ENLOpticalSimTrackInformation*) (aStep->GetTrack()->GetUserInformation()))->GetRayleigh() << G4endl;
       }
 
       // If WLS -> Use this !!!
@@ -313,7 +313,8 @@ if (Parent_ID ==0)
     evtac->SetIncidentE(aStep->GetPreStepPoint()->GetKineticEnergy()/keV);
   }
 }
-  if(aStep->GetPreStepPoint()->GetPhysicalVolume()->GetName() == "Scintillator") {evtac->AddEdep(aStep->GetTotalEnergyDeposit()/keV);}
+
+if(aStep->GetPreStepPoint()->GetPhysicalVolume()->GetName() == "Scintillator" && partname != "opticalphoton") {evtac->AddEdep(aStep->GetTotalEnergyDeposit()/keV);}
 
 //
 // if(Parent_ID>0)// && aStep->GetPreStepPoint()->GetPhysicalVolume()->GetName() == "PhysicalWorld")
