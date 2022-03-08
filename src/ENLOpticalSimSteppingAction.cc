@@ -135,6 +135,10 @@ ENLOpticalSimSteppingAction::ENLOpticalSimSteppingAction()
       Statisticsbis.BirthLambda = info->GetBirthLambda();
       Statisticsbis.TotalLength = aStep->GetTrack()->GetTrackLength()/mm;
       Statisticsbis.Time = aStep->GetPostStepPoint()->GetGlobalTime()/ns;
+      Statisticsbis.Rayleigh = ((ENLOpticalSimTrackInformation*) (aStep->GetTrack()->GetUserInformation()))->GetRayleigh();
+      Statisticsbis.Total_Reflections = ((ENLOpticalSimTrackInformation*) (aStep->GetTrack()->GetUserInformation()))->GetTotalInternalReflections();
+      Statisticsbis.Wrap_Reflections = ((ENLOpticalSimTrackInformation*)(aStep->GetTrack()->GetUserInformation()))->GetReflections();
+
 
       //G4cout << "Time =" << aStep->GetPostStepPoint()->GetGlobalTime()/ns << G4endl;
 
@@ -143,6 +147,13 @@ ENLOpticalSimSteppingAction::ENLOpticalSimSteppingAction()
         evtac->CountBulkAbs();
         //G4cout << "Photon BulkAbsorbed" << G4endl;
         //runac->UpdateStatisticsbis(Statisticsbis);
+      }
+
+      if(endproc == "OpRayleigh")
+      {
+        ((ENLOpticalSimTrackInformation*)(aStep->GetTrack()->GetUserInformation()))->CountRayleighScattering();
+        G4cout << "Rayleigh scattering" << G4endl;
+        G4cout << "Number of scattering = " << ((ENLOpticalSimTrackInformation*) (aStep->GetTrack()->GetUserInformation()))->GetRayleigh() << G4endl;
       }
 
       // If WLS -> Use this !!!
@@ -194,10 +205,6 @@ if(aStep->GetPostStepPoint()->GetStepStatus()==fGeomBoundary){
       if (theTrack->GetNextVolume()->GetName()=="Photocathode")
       {
         evtac->CountFailed();
-        Statisticsbis.Total_Reflections = ((ENLOpticalSimTrackInformation*) (aStep->GetTrack()->GetUserInformation()))->GetTotalInternalReflections();
-        //G4cout << "N reflexions Total = " << ((ENLOpticalSimTrackInformation*)(aStep->GetTrack()->GetUserInformation()))->GetTotalInternalReflections() << G4endl;
-        Statisticsbis.Wrap_Reflections = ((ENLOpticalSimTrackInformation*)(aStep->GetTrack()->GetUserInformation()))->GetReflections();
-        //G4cout << "N Wrap reflection = " << ((ENLOpticalSimTrackInformation*)(aStep->GetTrack()->GetUserInformation()))->GetReflections() << G4endl;
         //runac->UpdateStatisticsbis(Statisticsbis);
 
         //  Note that currently it is not set up to root output...see void CountDetected();
@@ -228,7 +235,7 @@ if(aStep->GetPostStepPoint()->GetStepStatus()==fGeomBoundary){
         ((ENLOpticalSimTrackInformation*)(aStep->GetTrack()->GetUserInformation()))->CountReflections();
         //G4cout << "Reflection" << G4endl;
         break;}
-        case TotalInternalReflection:
+      case TotalInternalReflection:
         {
           ((ENLOpticalSimTrackInformation*)(aStep->GetTrack()->GetUserInformation()))->CountTotalInternalReflections();
           //G4cout << "Reflection totale" << G4endl;

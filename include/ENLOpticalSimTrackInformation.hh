@@ -35,6 +35,7 @@ private:
   G4double TotalTrackLength;
   G4int WLSCount;
   G4int TotalInternalReflections;
+  G4int Rayleigh;
   G4double TimeBeforeWLS;
   G4double my_time;
   G4double my_time2;
@@ -54,11 +55,13 @@ public:
   G4double GetTrackLength() const {return DistBeforeWLS;}
   G4int GetWLSCount() const {return WLSCount;}
   G4int GetTotalInternalReflections() const {return TotalInternalReflections;}
+  G4int GetRayleigh() const {return Rayleigh;}
 
   void CountWLS(){WLSCount++;}
 
   void CountReflections();
   void CountTotalInternalReflections();
+  void CountRayleighScattering();
 
 
   void SetDistBeforeWLS(G4double dist){DistBeforeWLS = dist;}

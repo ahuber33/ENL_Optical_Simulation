@@ -22,6 +22,7 @@ ENLOpticalSimTrackInformation::ENLOpticalSimTrackInformation(const G4Track *aTra
     Reflections = 0;
     WLSCount = 0;
     TotalInternalReflections = 0;
+    Rayleigh =0;
   }
 
   else{
@@ -61,6 +62,12 @@ void ENLOpticalSimTrackInformation::CountReflections(){
 void ENLOpticalSimTrackInformation::CountTotalInternalReflections(){
 
     TotalInternalReflections++;
+}
+
+
+void ENLOpticalSimTrackInformation::CountRayleighScattering(){
+
+    Rayleigh++;
 }
 
 ENLOpticalSimTrackInformation::~ENLOpticalSimTrackInformation(){}

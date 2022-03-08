@@ -51,6 +51,7 @@ struct RunTallybis {
   float  Energy_pe;
   //float  Theta;
   //float  Phi;
+  int Rayleigh;
   int Total_Reflections;
   int Wrap_Reflections;
   float TotalLength;
@@ -95,7 +96,7 @@ public:
   void CountBulkAbs(){Statistics.BulkAbs++;}
   void CountEscaped(){Statistics.Escaped++;}
   void CountFailed(){Statistics.Failed++;}
-
+  
   void Setcpt_without_CU(G4int e){ cpt_without_CU = e;}
   G4int Getcpt_without_CU(){return cpt_without_CU;}
 

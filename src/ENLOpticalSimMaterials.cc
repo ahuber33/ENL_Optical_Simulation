@@ -751,9 +751,8 @@ void ENLOpticalSimMaterials::Construct()
 	ReadLaBr3.close();
 
 	// Read primary bulk absorption
-
 	std::ifstream LaBr3Readabsorb;
-	G4String LaBr3Readabsorblength = path+"LaBr3_attenuation_reverse.cfg";
+	G4String LaBr3Readabsorblength = path+"LaBr3_absorption_reverse.cfg";
 	std::vector<G4double> LaBr3_Absorption_Energy;
 	std::vector<G4double> LaBr3_Absorption_Long;
 
@@ -772,6 +771,29 @@ void ENLOpticalSimMaterials::Construct()
 	G4cout << "Error opening file: "<< LaBr3Readabsorblength << G4endl;
 
 	LaBr3Readabsorb.close();
+
+
+	// Read primary Rayleigh scattering
+	std::ifstream LaBr3Readscatt;
+	G4String LaBr3Readscattering = path+"LaBr3_scattering_reverse.cfg";
+	std::vector<G4double> LaBr3_Scattering_Energy;
+	std::vector<G4double> LaBr3_Scattering_Long;
+
+	LaBr3Readscatt.open(LaBr3Readscattering);
+	if (LaBr3Readscatt.is_open()){
+		while(!LaBr3Readscatt.eof()){
+			G4String filler;
+			LaBr3Readscatt >> pWavelength >> filler >> varabsorblength;
+			//G4cout << "Wavelength = " << pWavelength << " & absorption = "<< varabsorblength << G4endl;
+			LaBr3_Scattering_Energy.push_back((1240./pWavelength)*eV);
+			LaBr3_Scattering_Long.push_back(1.*varabsorblength*mm);
+		}
+	}
+	else
+
+	G4cout << "Error opening file: "<< LaBr3Readscattering << G4endl;
+
+	LaBr3Readscatt.close();
 
 
 	std::ifstream LaBr3Read_ref_index;
@@ -799,6 +821,7 @@ void ENLOpticalSimMaterials::Construct()
 	// Now apply the properties table
 	LaBr3MPT->AddProperty("RINDEX", LaBr3_Index_Energy, LaBr3_Index_Value);
 	LaBr3MPT->AddProperty("ABSLENGTH", LaBr3_Absorption_Energy, LaBr3_Absorption_Long);    // the bulk absorption spectrum
+	LaBr3MPT->AddProperty("RAYLEIGH", LaBr3_Scattering_Energy, LaBr3_Scattering_Long);    // the bulk absorption spectrum
 	LaBr3MPT->AddProperty("SCINTILLATIONCOMPONENT1", LaBr3_Emission_Energy, LaBr3_Emission_Ratio);
 	//scintMPT->AddProperty("SCINTILLATIONCOMPONENT2",scintEnergy,scintEmit,scintEntries);  // if slow component
 
