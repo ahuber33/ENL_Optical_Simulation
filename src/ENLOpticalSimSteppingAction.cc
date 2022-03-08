@@ -149,13 +149,6 @@ ENLOpticalSimSteppingAction::ENLOpticalSimSteppingAction()
         //runac->UpdateStatisticsbis(Statisticsbis);
       }
 
-      if(endproc == "OpRayleigh")
-      {
-        ((ENLOpticalSimTrackInformation*)(aStep->GetTrack()->GetUserInformation()))->CountRayleighScattering();
-        //G4cout << "Rayleigh scattering" << G4endl;
-        //G4cout << "Number of scattering = " << ((ENLOpticalSimTrackInformation*) (aStep->GetTrack()->GetUserInformation()))->GetRayleigh() << G4endl;
-      }
-
       // If WLS -> Use this !!!
       /*
       else if (endproc == "OpWLS")
@@ -182,8 +175,17 @@ ENLOpticalSimSteppingAction::ENLOpticalSimSteppingAction()
 }
 */
 
-else if(partname == "opticalphoton" && endproc != "Transportation")
+else if(partname == "opticalphoton" && endproc != "Transportation" && endproc != "OpRayleigh")
 G4cout << endproc << G4endl;
+
+
+if(endproc == "OpRayleigh")
+{
+  ((ENLOpticalSimTrackInformation*)(aStep->GetTrack()->GetUserInformation()))->CountRayleighScattering();
+  //G4cout << "Rayleigh scattering" << G4endl;
+  //G4cout << "Number of scattering = " << ((ENLOpticalSimTrackInformation*) (aStep->GetTrack()->GetUserInformation()))->GetRayleigh() << G4endl;
+}
+
 
 
 if(aStep->GetPostStepPoint()->GetStepStatus()==fGeomBoundary){

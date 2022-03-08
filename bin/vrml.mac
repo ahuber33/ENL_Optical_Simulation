@@ -131,15 +131,15 @@
 /gps/particle gamma
 /gps/pos/type Point
 /gps/pos/centre 0.0 0.0 -100.0 mm
-#/gps/energy 20 keV
+/gps/energy 0 keV
 #/gps/direction 0.0 0.0 1.0
 /gps/ang/type iso
 
-/gps/ene/type Arb
-/gps/hist/type arb
-/gps/hist/file Spectre_CELIA_Mo.txt
-/gps/hist/inter Lin
+#/gps/ene/type Arb
+#/gps/hist/type arb
+#/gps/hist/file Spectre_CELIA_Mo.txt
+#/gps/hist/inter Lin
 
-#/gps/particle ion
-#/gps/ion 11 22 0 0  
+/gps/particle ion
+/gps/ion 11 22 0 0  
 #/grdm/nucleusLimits 60 60 27 27
