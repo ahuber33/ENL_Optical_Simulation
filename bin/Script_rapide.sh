@@ -7,6 +7,6 @@ do
     do
 	sleep 10
     done
-    ./ENLOpticalSim a_${i} 10000 vrml.mac &
+    ./ENLOpticalSim a_${i} 100000 vrml.mac &
     sleep 10
     done

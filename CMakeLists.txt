@@ -63,8 +63,8 @@ set(PROJECT_SRC
 	${CMAKE_CURRENT_SOURCE_DIR}/src/ENLOpticalSimEventAction.cc
 	${CMAKE_CURRENT_SOURCE_DIR}/src/ENLOpticalSimTrackingAction.cc
 	${CMAKE_CURRENT_SOURCE_DIR}/src/ENLOpticalSimVisManager.cc
-	#${CMAKE_CURRENT_SOURCE_DIR}/src/ENLOpticalSimGeometry_PMT.cc
-  ${CMAKE_CURRENT_SOURCE_DIR}/src/ENLOpticalSimGeometry_HPD.cc
+	${CMAKE_CURRENT_SOURCE_DIR}/src/ENLOpticalSimGeometry_PMT.cc
+  #${CMAKE_CURRENT_SOURCE_DIR}/src/ENLOpticalSimGeometry_HPD.cc
 	${CMAKE_CURRENT_SOURCE_DIR}/src/ENLOpticalSimMaterials.cc
 	${CMAKE_CURRENT_SOURCE_DIR}/src/ENLOpticalSimPhysics.cc
 	${CMAKE_CURRENT_SOURCE_DIR}/src/ENLOpticalSimPrimaryGeneratorAction.cc

@@ -199,7 +199,7 @@ if(aStep->GetPostStepPoint()->GetStepStatus()==fGeomBoundary){
       //evtac->CountDetected(aTally);
       Statisticsbis.Energy_pe = aStep->GetTotalEnergyDeposit()/eV;
       //G4cout << "Energy of pe = " << aStep->GetTotalEnergyDeposit()/eV << " eV" << G4endl;
-      runac->UpdateStatisticsbis(Statisticsbis);
+      //runac->UpdateStatisticsbis(Statisticsbis);
 
       break;
       case Absorption:    // used to get the number TRANSMITTED!!

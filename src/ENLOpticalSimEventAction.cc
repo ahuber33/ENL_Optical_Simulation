@@ -129,6 +129,7 @@ if (Statistics.Generated >0)
 
   //runac->UpdateStatistics(Statistics);
     }
-runac->UpdateStatistics(Statistics);
+
+if(Statistics.Deposit >0){runac->UpdateStatistics(Statistics);}
 
 }
