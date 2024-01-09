@@ -19,15 +19,19 @@
 #   - theRunTree_bis corresponds to information attached to all single photons created. Be careful if you launch big simulations because the ROOT file will be fat... Don't hesitate to comment the "runac->UpdateStatisticsbis(Statisticsbis);" in the ENLOpticalSimEventAction.cc if you don't need these informations
 #   - Tree_electrons corresponds to basic information about electrons as a primary particle.
 
-#commit #1 le 07/03/2022 (First commit)
+# Commit #1 le 07/03/2022 (First commit)
 # - Simulation issue  du commit #5 de TPSim avec nettoyage pour simplifier la lecture du code
 
-#commit #2 le 07/03/2022 (additional commit)
+# Commit #2 le 07/03/2022 (additional commit)
 # - Ajout de l'information sur l'énergie du photoélectrons crée à la photocathode dans le RunTreeBis au niveau de la détection.
 # - Ajout des commentaires nécessaires à l'installation et à l'utilisation de la simulation au début de ce fichier.
 
-#commit #3 le 08/03/2022 (Split absorption/scattering length)
+# Commit #3 le 08/03/2022 (Split absorption/scattering length)
 # - Ajout de la propriété Rayleigh scattering et donc split de l'attenuation length en absorption length et scattering length selon [https://www.researchgate.net/publication/254060762_Optical_Absorption_Length_Scattering_Length_and_Refractive_Index_of_LaBr3Ce3]
 # - Selon cette référence, l'absorption entraine quasi à chaque fois la réémission d'un photon derrière donc à investiguer dans le futur !!!
 # -> commit 3 bis rétablit juste certains commentaires pour éviter de polluer l'affichage lors de la simulation
 # -> commit 3 ter est juste un mini patch résolvant un petit soucis dans l'obtention des résultats
+
+# Commit #4 le 09/01/2024 
+# - Passage du code sur la version 11.2.0 de GEANT4
+# - Passage de Atom vers Visual Code Studio avec notamment création d'une branche save permettant de push les changements d'une journée avant demerge sur la branche principale
